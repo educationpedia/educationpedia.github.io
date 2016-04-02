@@ -1,0 +1,485 @@
+/*!
+Theme Name: anamorhpic
+Theme URI: http://underscores.me/
+Author: King Sidharth
+Author URI: http://www.kingsidharth.com
+Description: A custom theme for anamorphic.in using on inuit.css & _s
+Version: 1.0
+License: GNU General Public License
+*/
+
+
+/* __________ IMPORTS __________ */
+@import "defaults";
+@import "../vendor/inuit";
+
+@import "compass";
+
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic);
+
+@import "responsive";
+
+
+/* __________ VARIABLES __________ */
+ $white:      #f1f2e4;
+   $red:      #f28972;
+ $green:      #2abfb0;
+$lgreen:      #688a87;
+ $black:      #0e2825;
+
+@mixin sans {
+  font-family: 'Lato', 'Lucida Grande', 'Lucida Sans', Tahoma, sans-serif;
+}
+
+body {
+  color: $black;
+  background: $white;
+  @include sans;
+  a {
+    color: $red;
+    text-decoration: none;
+    &:hover {
+      color: $lgreen;
+    }
+    &:active {
+      outline: none;
+    }
+    .icon {
+      text-decoration: none;
+    }
+  }
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 0.9em;
+    margin-bottom: 0.5em;
+  }
+  blockquote {
+    color: $lgreen;
+    padding-left: 1em;
+    border-left: 1px solid $red;
+    text-indent: 0px;
+    quotes: none;
+    line-height: 1.65em;
+    font-style: italic;
+    letter-spacing: 0.5px;
+    .source {
+      text-align: right;
+      font-variant: italic;
+    }
+  }
+  ul {
+    list-style-type: square;
+  }
+  ul, ol, dd {
+    margin-left: 1.8rem;
+  }
+}
+
+body.page {
+  max-width: 100%;
+  margin: auto;
+  #content_area .page {
+    max-width: 500px;
+  }
+}
+
+.full-width {
+  max-width: 100%;
+  padding-left: 1.6em;
+  padding-right: 1.6em;
+}
+
+.page {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+::selection {
+  background: $red;
+  color: $white;
+}
+
+::-moz-selection {
+  background: $red;
+  color: $white;
+}
+
+.format-text, p, ul, table, ol {
+  a {
+    text-decoration: underline;
+  }
+}
+
+.brand {
+  background: url('assets/images/anamorphic-logo.png') transparent top left no-repeat;
+  background-size: contain;
+  display: inline-block;
+  text-indent: -9999px;
+  width: 100%;
+}
+  #main-logo {
+    margin-top: 0;
+    margin-bottom: 0;
+    .brand {
+      background-image: url('assets/images/anamorphic-logo-red.png');
+    }
+  }
+
+
+.entry-title {
+  margin-top: 0;
+  font-weight: 300;
+  a {
+    text-decoration: none;
+  }
+}
+
+.subheading {
+  font-weight: 400;
+  font-size: 1.1em;
+  letter-spacing: 1px;
+}
+.entry-meta {
+  font-size: 0.9em;
+  color: $lgreen;
+}
+
+.main-meta {
+  .name, .creator {
+    font-weight: bold;
+  }
+  .name {
+    font-size: 1.3em;
+    display: block;
+  }
+  .byline {
+    font-style: italic;
+    font-weight: 300;
+  }
+}
+
+aside.entry-meta {
+  p {
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px dotted $green;
+
+    a {
+      color: $lgreen;
+      text-decoration: none;
+      border-bottom: 1px dotted $red;
+      &:hover {
+        color: $red;
+        border-bottom: 1px solid $red;
+      }
+      &:active {
+        color: $black;
+      }
+    }
+  }
+}
+
+#header_area {
+  margin-top: 1.5em;
+  nav .nav {
+    margin-bottom: 0;
+    word-spacing: 0;
+    li{
+      text-align: center;
+      a{
+        padding-top: 17px;
+        padding-bottom: 18px;
+        text-decoration: none;
+        &:hover, .active {
+          background: $red;
+          color: $white;
+        }
+        .icon {
+          font-size: 0.9em;
+        }
+      }
+    }
+  }
+}
+
+
+
+/* __________ HEADER __________ */
+#header_area {
+  margin-bottom: 0.5em;
+  header {
+  }
+}
+
+#main-navigation {
+  text-align: right;
+  .active {
+    background: $red;
+    color: $white;
+  }
+}
+
+#content_area {
+  padding-top: 2em;
+}
+
+// List of posts
+.post_list {
+  .post_item_wrap {
+    margin-bottom: 20px;
+    a {
+      text-decoration: none;
+      padding-bottom: 10px;
+      max-width: 100%;
+      border-bottom: 1px dotted $lgreen;
+      display: inline-block;
+      color: $lgreen;
+      @include transition(0.2s);
+      &:hover {
+        color: $black;
+        border-bottom: 1px solid $red;
+        .rating {
+          color: $lgreen;
+        }
+        .entry-meta span{
+          color: $black;
+        }
+        .entry-title {
+          color: $black;
+        }
+      }
+      &:active {
+        background: adjust-lightness($white, -2%);
+      }
+      .entry-date {
+        font-size: 0.8em;
+      }
+      .entry-title {
+        font-size: 1em;
+        line-height: 1.4em;
+        margin-bottom: 3px;
+        color: $red;
+        font-weight: normal;
+        @include transition(0.2s);
+      }
+      .entry-meta {
+        span {
+          @include transition(0.2s);      
+          display: block;
+        }
+      }
+    }
+
+    .subheading {
+      font-size: 0.9em;
+      color: adjust-lightness($lgreen, 10%);
+      margin-bottom: 0.2rem;
+    }
+  }
+  .group-title {
+    font-size: 1em;
+    font-weight: 300;
+    text-transform: uppercase;
+    color: $lgreen;
+  }
+}
+
+
+.rating {
+  color: $green;
+}
+
+.center {
+  text-align: center;
+}
+.right {
+  text-align: right;
+}
+.left {
+  text-align: left;
+}
+
+.archive-entry-list-item {
+  h1, h2, h3, h4, h5, h6, p, ul {
+    margin-bottom: 0.35em;
+  }
+}
+
+#footer_area {
+  margin-top: 0.5em;
+  padding-top: 0.5em;
+  footer {
+    font-size: 0.9em;
+    text-transform: uppercase;
+    color: adjust-lightness($black, 10%);
+  }
+}
+
+
+/* _____ ARCHIVES PAGE _____ */
+.archive {
+  .post {
+    border-bottom: 1px dotted $lgreen;
+    padding-bottom: 10px;
+    margin-bottom:  10px;
+  }
+  .media {
+    margin-bottom: 0px;
+  }
+  .entry-title {
+    line-height: 1.4em;
+  }
+}
+
+
+@include media-query(palm) {
+  .palm-hidden {
+    display: none!important;
+  }
+}
+
+
+// Affiliate Promo 
+.affiliate-promo {
+  margin-top: 1em;
+  border-top: 2px solid $green;
+  h4 {
+    font-weight: 400;
+    text-align: center;
+    .icon {
+      color: $red;
+    }
+  }
+
+  ul, p {
+    margin-bottom: 0.5em;
+    font-size: 0.85em;
+  }
+  .nav--button li a {
+    text-decoration: underline;
+  }
+} 
+// breadcrumbs
+.breadcrumbs {
+  font-size: 0.9em;
+  font-weight: 300;
+  margin-bottom: 0.5rem;
+  .icon {
+    font-size: 0.5em;
+    padding-left: 0.2em;
+    padding-right: 0.2em;
+  }
+  a {
+    text-decoration: none;
+  }
+}
+
+// Single Post Content Promo
+.related_posts {
+  margin-top: 10px;
+  border-top: 2px solid $green;
+  h4 {
+    text-transform: uppercase;
+    font-size: 0.9em;
+    font-weight: normal;
+    color: $lgreen;
+  }
+  .nav {
+    li {
+      border-bottom: 1px dotted adjust-lightness($white, -15%);
+      margin-bottom: 0.2em;
+      a {
+        text-decoration: none;
+      }
+    }
+  }
+  abbr {
+    display: none;
+  }
+}
+
+// Special Nav 
+.nav--button {
+  li {
+    a{
+      text-decoration: none;
+      text-align: center;
+      border-radius: 2em;
+      padding: 0.4em 1.18em;
+    }
+  }
+  &.nav--stacked {
+    li {
+      margin-bottom: 0.5em;
+    }
+  }
+  &.nav--block {
+    li {
+      margin-right: 0.8em;
+    }
+  }
+}
+
+@mixin nav--button($color, $background) {
+  li { 
+    a {
+      background: $background;
+      border: 1px solid $color;
+      color: $color;
+      &:hover, &:focus, &.active {
+        background: $color;
+        color: $background;
+        border-color: adjust-lightness($color, -10%);
+      }
+    }
+  } 
+}
+
+.nav--button-red {
+  @include nav--button($red, $white);
+}
+.nav--button-green {
+  @include nav--button($green, $white);
+}
+
+.nav--button-white-lgreen {
+  @include nav--button($white, $lgreen);
+}
+
+
+
+#promo_area {
+}
+  #promo {
+    hr {
+      border-top: 1px solid $red;
+      border-width: 1px 0 0 0;
+      margin-bottom: 5px;
+    }
+    h4{
+      font-weight: 300;
+    }
+    a {
+      text-decoration: none;
+    }
+  }
+    #subscribe{
+      h4 {
+        color: $green;
+        font-weight: bold;
+      }
+      p{
+        margin-bottom: 0.5rem;
+      }
+    }
+    #get_reviewed{}
+    #elsewhere{}
+
+
+// DIRTY
+// TODO: Find better way to do pagination
+.pagination-nav {
+  padding-bottom:  1em;
+  padding-top:     1em;
+  padding-left:  0.8em;
+}
+
